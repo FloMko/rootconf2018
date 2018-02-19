@@ -2,9 +2,8 @@ led / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-#
-large files
-
+#large files
+shkib.csv
 # C extensions
 *.so
 
