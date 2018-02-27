@@ -71,14 +71,10 @@ def generate_answer():
     traff_prod_dict = traff_dict(count_prod_dict)
     # print(find_max_count(traff_prod_dict))
     with open('ex5_out.txt', mode='w') as outfile:
-        outfile.write(
-            '# Поиск 5ти пользователей, сгенерировавших наибольшее\
-             количество запросов')
-        outfile.write(''.join(find_max_count(traff_prod_dict)))
-        outfile.write(
-            '# Поиск 5ти пользователей, отправивших наибольшее\
-             наибольшее количество данных')
-        outfile.write(''.join(find_max_bytes(traff_prod_dict)))
+        outfile.write('\n # Поиск 5ти пользователей, сгенерировавших наибольшее количество запросов \n')
+        outfile.write(' '.join(find_max_count(traff_prod_dict)))
+        outfile.write('\n # Поиск 5ти пользователей, отправивших наибольшее количество данных \n')
+        outfile.write(' '.join(find_max_bytes(traff_prod_dict)))
 
 
 if __name__ == '__main__':
