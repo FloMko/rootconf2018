@@ -20,6 +20,7 @@ def count_dict(prod_dict):
     return prod_dict
 
 
+
 def traff_dict(prod_dict):
     gen_dict = input_read()
     for rows in gen_dict:
@@ -28,18 +29,56 @@ def traff_dict(prod_dict):
     return prod_dict
 
 
-def find_max_queue(prod_dict):
-    return count_sorted[:4] 
+def find_max_count(prod_dict):
+    timer = 0
+    max_count = 0
+    max_count_name = ''
+    max_count_list = list()
+    while timer < 6:
+        for item in prod_dict:
+            if prod_dict[item].get('count') > max_count:
+                max_count_name = item
+                max_count = prod_dict[item].get('count')
+        max_count_list.append(max_count_name)
+        prod_dict.pop(max_count_name)
+        timer +=1
+        max_count_name = ''
+        max_count = 0
+    return max_count_list
+
+
+def find_max_bytes(prod_dict):
+    timer = 0
+    max_count = 0
+    max_count_name = ''
+    max_count_list = list()
+    while timer < 6:
+        for item in prod_dict:
+            if prod_dict[item].get('output_byte') > max_count:
+                max_count_name = item
+                max_count = prod_dict[item].get('output_byte')
+        max_count_list.append(max_count_name)
+        prod_dict.pop(max_count_name)
+        timer +=1
+        max_count_name = ''
+        max_count = 0
+    return max_count_list
 
 
 def generate_answer():
     prod_dict = prepare_dict(input_read())
-    count_d
+    count_prod_dict = count_dict(prod_dict)
+    traff_prod_dict = traff_dict(count_prod_dict)
+    # print(find_max_count(traff_prod_dict))
     with open('ex5_out.txt', mode='w') as outfile:
         outfile.write(
             '# Поиск 5ти пользователей, сгенерировавших наибольшее\
              количество запросов')
-        outfile.write(find_max_queue(prod_dict))
+        outfile.write(''.join(find_max_count(traff_prod_dict)))
+        outfile.write(
+            '# Поиск 5ти пользователей, отправивших наибольшее\
+             наибольшее количество данных')
+        outfile.write(''.join(find_max_bytes(traff_prod_dict)))
 
 
 if __name__ == '__main__':
