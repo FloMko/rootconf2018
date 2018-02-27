@@ -12,12 +12,21 @@ def prepare_dict(input_dict):
     return(prod_dict)
 
 
-def count_sorted(prod_dict):
+def count_dict(prod_dict):
     gen_dict = input_read()
     for rows in gen_dict:
         src_user = rows['src_user']
         prod_dict.get(src_user)['count'] +=1
     return prod_dict
+
+
+def traff_dict(prod_dict):
+    gen_dict = input_read()
+    for rows in gen_dict:
+        src_user = rows['src_user']
+        prod_dict.get(src_user)['output_byte'] +=int(rows['output_byte'])
+    return prod_dict
+
 
 def find_max_queue(prod_dict):
     return count_sorted[:4] 
